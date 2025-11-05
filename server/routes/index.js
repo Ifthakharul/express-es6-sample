@@ -1,10 +1,15 @@
 import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 var router = express.Router();
 
-/* GET home page. */
+/* GET home page - serve static HTML */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'World' });
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 export default router;
